@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Simple Chat</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <!-- Styles -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="chat">
+  <div class="app">
+    <aside class="sidebar">
+      <div class="sidebar-top">
+        <div class="profile">
+          <div id="myAvatar" class="avatar">U</div>
+          <div class="profile-meta">
+            <div id="profileName" class="profile-name">You</div>
+            <div id="profileEmail" class="profile-email">demo@local</div>
+          </div>
+        </div>
+        <div class="sidebar-actions">
+          <button id="addContactBtn" class="icon-btn" title="Add contact">＋</button>
+          <button id="addGroupBtn" class="icon-btn" title="Add group">👥</button>
+          <button id="logoutBtn" class="icon-btn" title="Logout">⎋</button>
+        </div>
+      </div>
+
+      <div class="search">
+        <input id="userSearch" placeholder="Search contacts..." />
+      </div>
+
+      <div class="list-section">
+        <div class="list-title">Contacts</div>
+        <div id="contactsList" class="items-list"></div>
+      </div>
+
+      <div class="list-section">
+        <div class="list-title">Groups</div>
+        <div id="groupsList" class="items-list"></div>
+      </div>
+
+      <div class="sidebar-footer">
+        <small class="muted">Demo/local fallback + real backend supported.</small>
+      </div>
+    </aside>
+
+    <main class="chat-panel">
+      <div class="chat-header" id="chatHeader">
+        <div class="chat-header-left">
+          <div id="chatAvatar" class="avatar small">C</div>
+          <div>
+            <div id="chatTitle" class="chat-title">Select a contact to start</div>
+            <div id="chatSubtitle" class="chat-subtitle">Online</div>
+          </div>
+        </div>
+        <div class="chat-header-right">
+        </div>
+      </div>
+
+      <div id="messages" class="messages">
+        <div class="empty-state">Choose a contact on the left to begin messaging.</div>
+      </div>
+
+      <div class="chat-input">
+        <input id="fileInput" type="file" style="display:none" />
+        <button id="attachBtn" class="icon-btn" title="Attach">📎</button>
+        <input id="msg" autocomplete="off" placeholder="Type a message..." />
+        <button id="sendBtn" class="send-btn">Send</button>
+      </div>
+    </main>
+  </div>
+
+  <!-- socket.io client -->
+  <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
+  <script src="script.js"></script>
+
+  <!-- Group Creation Modal -->
+  <div id="groupModal" class="modal">
+    <div class="modal-content">
+      <h3>Create Group</h3>
+      <input id="groupName" type="text" placeholder="Group name" />
+      <div id="contactsCheckboxes"></div>
+      <button id="createGroupBtn">Create</button>
+      <button id="cancelGroupBtn">Cancel</button>
+    </div>
+  </div>
+
+</body>
+</html>
